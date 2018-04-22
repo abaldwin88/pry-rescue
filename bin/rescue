@@ -39,11 +39,7 @@ else
   when 'rails'
     ENV['PRY_RESCUE_RAILS'] = 'true'
     exec(*ARGV)
-  when 'rake'
-    require File.expand_path('../../lib/pry-rescue.rb', __FILE__)
-    PryRescue.load_rake ARGV[1]
-    exit
-  when /^re?spec$/
+  when /^re?spec|rake$/
     ENV['SPEC_OPTS'] = "#{ENV['SPEC_OPTS']} -r pry-rescue/rspec"
     exec(*ARGV)
   end
